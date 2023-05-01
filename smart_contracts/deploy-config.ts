@@ -17,7 +17,7 @@ export async function deploy(name: (typeof contracts)[number], appSpec: AppSpec)
     algod,
   )
   const isLocal = await algokit.isLocalNet(algod)
-  const appClient = algokit.getApplicationClient(
+  const appClient = algokit.getAppClient(
     {
       app: appSpec,
       sender: deployer,

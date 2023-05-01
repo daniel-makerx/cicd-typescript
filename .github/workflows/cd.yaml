@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/check-python.yaml
 
   deploy-testnet:
-    runs-on: "ubuntu-latest"
+    runs-on: 'ubuntu-latest'
     needs: ci-check-python
     environment: Test
     steps:
@@ -26,8 +26,8 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
-          cache: "poetry"
+          python-version: '3.10'
+          cache: 'poetry'
 
       - name: Install algokit
         run: pipx install algokit
@@ -45,7 +45,7 @@ jobs:
         run: poetry run python -m smart_contracts build
 
       - name: Deploy to testnet
-        run: npm run --prefix smart_contracts deploy
+        run: npm run --prefix smart_contracts deploy:ci
 
         env:
           ALGOD_SERVER: https://testnet-api.algonode.cloud/
@@ -62,5 +62,3 @@ jobs:
 
           # Dispenser mnemonic is optional, but can be used to ensure the deployer account is funded
           DISPENSER_MNEMONIC: ${{ secrets.DISPENSER_MNEMONIC }}
-
-
