@@ -45,7 +45,7 @@ jobs:
         run: poetry run python -m smart_contracts build
 
       - name: Deploy to testnet
-        run: npm run deploy
+        run: npm run --prefix smart_contracts deploy
 
         env:
           ALGOD_SERVER: https://testnet-api.algonode.cloud/
